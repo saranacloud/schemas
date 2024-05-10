@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "QRCreateRequest",
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "string",
+            "description": "The data to encode in the QR code."
+        },
+        "content_type": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 11,
+            "description": "The content type of the data to encode in the QR code."
+        },
+        "output_format": {
+            "type": "integer",
+            "description": "The output format of the QR code.",
+            "enum": [0, 1, 2, 3, 64]
+        },
+        "output_device": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "The output device to optimize the QR code for."
+        },
+        "dpi": {
+            "type": "integer",
+            "description": "The DPI of the printer if the output device is a printer."
+        },
+        "screen_resolution": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "The screen resolution if the output device is a screen."
+        },
+        "label_height_in": {
+            "type": "number",
+            "minimum": 0,
+            "description": "The height of the label in inches if the output device is a printer."
+        },
+        "label_width_in": {
+            "type": "number",
+            "minimum": 0,
+            "description": "The width of the label in inches if the output device is a printer."
+        },
+        "error_correction_level": {
+            "type": "string",
+            "description": "The error correction level for the QR code.",
+            "enum": ["L", "M", "Q", "H"]
+        },
+        "max_grid_size": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The maximum grid size for the QR code."
+        },
+        "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 40,
+            "description": "The version of the QR code."
+        },
+        "box_size": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The box size for the QR code."
+        },
+        "border": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "The border size for the QR code."
+        },
+        "fill_color": {
+            "type": "string",
+            "description": "The fill color for the QR code as a hex color code or named color."
+        },
+        "background_color": {
+            "type": "string",
+            "description": "The background color for the QR code as a hex color code or named color."
+        }
+    },
+    "required": ["data", "output_device"]
+}
